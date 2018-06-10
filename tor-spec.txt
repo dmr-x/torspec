@@ -1379,7 +1379,7 @@ see tor-design.pdf.
          OP receives data cell:
             For I=N...1,
                 Decrypt with Kb_I.  If the payload is recognized (see
-                section 6..1), then stop and process the payload.
+                section 6.1), then stop and process the payload.
 
    For more information, see section 6 below.
 
