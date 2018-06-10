@@ -1383,7 +1383,7 @@ see tor-design.pdf.
 
    For more information, see section 6 below.
 
-5.6. Handling relay_early cells
+5.6. Handling RELAY_EARLY cells
 
    A RELAY_EARLY cell is designed to limit the length any circuit can reach.
    When an OR receives a RELAY_EARLY cell, and the next node in the circuit
