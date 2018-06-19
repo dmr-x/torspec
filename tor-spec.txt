@@ -1447,7 +1447,8 @@ see tor-design.pdf.
         14 -- RELAY_EXTEND2   [forward]             [control]
         15 -- RELAY_EXTENDED2 [backward]            [control]
 
-        32..40 -- Used for hidden services; see rend-spec.txt.
+        32..40 -- Used for hidden services
+                  See rend-spec-v2.txt and rend-spec-v3.txt.
 
    Commands labelled as "forward" must only be sent by the originator
    of the circuit. Commands labelled as "backward" must only be sent by
