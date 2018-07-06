@@ -964,15 +964,15 @@ see tor-design.pdf.
       [02] Legacy identity, with LSPEC payload:
          SHA1 identity fingerprint     [20 bytes]
 
-         At most one may be listed.
-
       [03] Ed25519 identity, with LSPEC payload:
          Ed25519 identity fingerprint  [32 bytes]
 
-         At most one may be listed.
-
    Nodes MUST ignore unrecognized specifiers, and MUST accept multiple
-   instances of specifiers other than 'legacy identity'.
+   instances of specifiers other than 'identity fingerprint'
+   specifiers.
+
+   At most, one 'identity fingerprint' specifier of each type may be
+   listed. (Namely: SHA1, Ed25519)
 
    The relay payload for an EXTEND relay cell consists of:
          Address                       [4 bytes]
