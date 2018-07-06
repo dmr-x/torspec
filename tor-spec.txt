@@ -977,6 +977,7 @@ see tor-design.pdf.
    Handshakes and Handshake Types (HTYPEs) are the same as for CREATE2
    cells. See section 5.1.
 
+
    The relay payload for an EXTEND relay cell consists of:
          Address                       [4 bytes]
          Port                          [2 bytes]
