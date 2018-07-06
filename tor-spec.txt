@@ -1594,9 +1594,15 @@ see tor-design.pdf.
    the TCP connection completely, and sends nothing more along the
    circuit for that stream.
 
-   The payload of a RELAY_END cell begins with a single 'reason' byte to
-   describe why the stream is closing.  For some reasons, it contains
-   additional data (depending on the reason.)  The values are:
+   The payload of a RELAY_END cell is as follows:
+
+         ReasonCode                    [1 byte]
+         OptionalData                  [up to PAYLOAD_LEN-12 bytes]
+
+   where ReasonCode describes why the stream is closing.  For some reasons,
+   the payload contains additional data (depending on the reason.)
+
+   The values for ReasonCodes are:
 
        1 -- REASON_MISC           (catch-all for unlisted reasons)
        2 -- REASON_RESOLVEFAILED  (couldn't look up hostname)
@@ -1617,9 +1623,17 @@ see tor-design.pdf.
       14 -- REASON_NOTDIRECTORY   (Client sent RELAY_BEGIN_DIR to a
                                    non-directory relay.)
 
-   (With REASON_EXITPOLICY, the 4-byte IPv4 address or 16-byte IPv6 address
-   forms the optional data, along with a 4-byte TTL; no other reason
-   currently has extra data.)
+   With REASON_EXITPOLICY, the OptionalData takes either of these formats:
+
+         IPv4 address                  [4 bytes]
+         TTL                           [4 bytes]
+
+   or
+
+         IPv6 address                  [16 bytes]
+         TTL                           [4 bytes]
+
+   No other reason currently has extra data.
 
    OPs and ORs MUST accept reasons not on the above list, since future
    versions of Tor may provide more fine-grained reasons.
