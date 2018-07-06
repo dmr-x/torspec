@@ -1525,9 +1525,12 @@ see tor-design.pdf.
    exit node replies with a RELAY_END cell.  (See 6.4 below.)
    Otherwise, the exit node replies with a RELAY_CONNECTED cell, whose
    payload is in one of the following formats:
+
        The IPv4 address to which the connection was made [4 octets]
        A number of seconds (TTL) for which the address may be cached [4 octets]
+
     or
+
        Four zero-valued octets [4 octets]
        An address type (6)     [1 octet]
        The IPv6 address to which the connection was made [16 octets]
