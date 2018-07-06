@@ -952,16 +952,24 @@ see tor-design.pdf.
        HDATA      (Client Handshake Data)         [HLEN bytes]
 
    Link specifiers describe the next node in the circuit and how to
-   connect to it. Recognized specifiers are:
-      [00] TLS-over-TCP, IPv4 address
-           A four-byte IPv4 address plus two-byte ORPort
-      [01] TLS-over-TCP, IPv6 address
-           A sixteen-byte IPv6 address plus two-byte ORPort
-      [02] Legacy identity
-           A 20-byte SHA1 identity fingerprint. At most one may be listed.
-      [03] Ed25519 identity
-           A 32-byte Ed25519 identity fingerprint. At most one may
-           be listed.
+   connect to it. Recognized specifier types and payloads are:
+      [00] TLS-over-TCP, IPv4 address, with LSPEC payload:
+         IPv4 address                  [4 bytes]
+         ORPort                        [2 bytes]
+
+      [01] TLS-over-TCP, IPv6 address, with LSPEC payload:
+         IPv6 address                  [16 bytes]
+         ORPort                        [2 bytes]
+
+      [02] Legacy identity, with LSPEC payload:
+         SHA1 identity fingerprint     [20 bytes]
+
+         At most one may be listed.
+
+      [03] Ed25519 identity, with LSPEC payload:
+         Ed25519 identity fingerprint  [32 bytes]
+
+         At most one may be listed.
 
    Nodes MUST ignore unrecognized specifiers, and MUST accept multiple
    instances of specifiers other than 'legacy identity'.
