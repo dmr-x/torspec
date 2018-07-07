@@ -769,8 +769,7 @@ see tor-design.pdf.
          new implementations should not do that.) [24 octets]
        SIG: A signature of a SHA256 hash of all the previous fields
          using the initiator's "Authenticate" key as presented.  (As
-         always in Tor, we use OAEP-MGF1 padding; see tor-spec.txt
-         section 0.3.)
+         always in Tor, we use OAEP-MGF1 padding; see section 0.3.)
           [variable length]
 
    To check the AUTHENTICATE cell, a responder checks that all fields
